@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(247, 208, 247);
+        }
+        .container {
+            text-align: center;
+        }
+        .image-box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            background-color: rgb(247, 208, 247);
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-box" id="imageBox">
+            <!-- รูปภาพเริ่มต้น -->
+            <img src="https://github.com/nueanuea1/Web_html/blob/main/index/cute.jpg" width="100%" height="100%" style="border-radius: 20px; object-fit: cover;">
+        </div>
+        <div class="text" id="text">
+            
+        </div>
+        <button class="button" onclick="nextImage()">🤍</button>
+    </div>
+
+    <script>
+        // เพิ่ม URL รูปภาพและวิดีโอเพิ่มเติมที่นี่
+        let images = [
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/1.jpg",  // รูปแรก
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/2.jpg", // รูปที่สอง
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/3.jpg",  // รูปที่สาม
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/4.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/5.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/6.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/7.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/8.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/9.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/10.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/11.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/12.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/13.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/14.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/15.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/16.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/17.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/18.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/19.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/20.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/21.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/22.jpg",
+            "https://raw.githubusercontent.com/nueanuea1/Web_html/47dfc8d3ffd45c74b158b871465a665faa988a93/index/23.jpg",
+        ];
+
+        let index = 0;
+
+        function nextImage() {
+            // เลื่อน index ไปยังรูปถัดไป
+            index = (index + 1) % images.length;
+        
+            let imageBox = document.getElementById("imageBox");
+            let currentImage = images[index];
+            if (currentImage.endsWith(".mp4")) {
+                imageBox.innerHTML = '<video width="100%" height="100%" style="border-radius: 18px; object-fit: cover;" autoplay loop controls><source src="' + currentImage + '" type="video/mp4"></video>';
+            } else {
+                imageBox.innerHTML = '<img src="' + currentImage + '" width="100%" height="100%" style="border-radius: 18px; object-fit: cover;">';
+            }
+        }
+    </script>
+
+</body>
+</html>
