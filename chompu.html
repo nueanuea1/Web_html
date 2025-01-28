@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(247, 208, 247);
+        }
+        .container {
+            text-align: center;
+        }
+        .image-box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            background-color: rgb(247, 208, 247);
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-box" id="imageBox">
+            <!-- รูปภาพเริ่มต้น -->
+            <img src="/u/cute.jpg" width="100%" height="100%" style="border-radius: 20px; object-fit: cover;">
+        </div>
+        <div class="text" id="text">
+            
+        </div>
+        <button class="button" onclick="nextImage()">🤍</button>
+    </div>
+
+    <script>
+        // เพิ่ม URL รูปภาพและวิดีโอเพิ่มเติมที่นี่
+        let images = [
+            "/u/1.jpg",  // รูปแรก
+            "/u/2.jpg", // รูปที่สอง
+            "/u/3.jpg",  // รูปที่สาม
+            "/u/4.jpg",
+            "/u/5.jpg",
+            "/u/6.jpg",
+            "/u/7.jpg",
+            "/u/8.jpg",
+            "/u/9.jpg",
+            "/u/10.jpg",
+            "/u/11.jpg",
+            "/u/12.jpg",
+            "/u/13.jpg",
+            "/u/14.jpg",
+            "/u/15.jpg",
+            "/u/16.jpg",
+            "/u/17.jpg",
+            "/u/18.jpg",
+            "/u/19.jpg",
+            "/u/20.jpg",
+            "/u/21.jpg",
+            "/u/22.jpg",
+            "/u/23.jpg",
+            "/u/24.mp4",
+            "/u/25.mp4",
+        ];
+
+        let index = 0;
+
+        function nextImage() {
+           
+            index = (index + 1) % images.length;
+        
+            let imageBox = document.getElementById("imageBox");
+            let currentImage = images[index];
+            if (currentImage.endsWith(".mp4")) {
+                imageBox.innerHTML = '<video width="100%" height="100%" style="border-radius: 18px; object-fit: cover;" autoplay loop controls><source src="' + currentImage + '" type="video/mp4"></video>';
+            } else {
+                imageBox.innerHTML = '<img src="' + currentImage + '" width="100%" height="100%" style="border-radius: 18px; object-fit: cover;">';
+            }
+        }
+    </script>
+    </script>
+        
+        
+    </script>
+
+</body>
+</html>
